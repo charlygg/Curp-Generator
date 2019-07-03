@@ -6,3 +6,7 @@
 *.jar
 *.war
 *.ear
+/bin/
+/target/
+/.project
+/.classpath

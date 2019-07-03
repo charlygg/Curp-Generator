@@ -111,7 +111,7 @@ public class CurpGenerator
             throw new Exception( error );
         }
 
-        // generar Curp
+        // Generar la CURP en base a las reglas 
         StringBuilder curp = new StringBuilder();
         curp.append( primerApellido.charAt( 0 ) );
         curp.append( primeraVocal( primerApellido.substring( 1 ) ) );
@@ -125,8 +125,10 @@ public class CurpGenerator
         curp.append( primeraLetra( primerApellido.substring( 1 ) ) );
         curp.append( primeraLetra( segundoApellido.substring( 1 ) ) );
         curp.append( primeraLetra( nombres.substring( 1 ) ) );
-        curp.append( 0 );
-        curp.append( random.nextInt( 10 ) );
+        curp.append( 0 );   
+        String digitoVerificador = obtenerDigitoVerificador(curp.toString()); // Digito Verificador 
+        curp.append(digitoVerificador);
+        // curp.append( random.nextInt( 10 ) );
         return curp.toString();
     }
 
@@ -153,6 +155,28 @@ public class CurpGenerator
             return s.charAt( i );
         }
         return 'X';
+    }
+    
+    /* Se agrega una nueva funcion para determinar el dígito verificador */
+    public static String obtenerDigitoVerificador(String curp17)
+    {
+    	String diccionario = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+    	float  lngSuma     = 0.0F; 
+    	float  lngDigito   = 0.0F;
+    	
+    	for(int i=0; i<17; i++)
+    	{
+    		lngSuma = lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18-i);
+    	}
+
+    	lngDigito = 10 - (lngSuma % 10);
+    	
+    	if(lngDigito==10)
+    	{
+    		return "0";
+    	}
+		return String.format("%.0f", lngDigito);
+    	
     }
 
     private static String validarDatos( String primerApellido, String segundoApellido, String nombres, String sexo,

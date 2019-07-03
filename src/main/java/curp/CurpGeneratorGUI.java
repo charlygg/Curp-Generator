@@ -108,7 +108,6 @@ public class CurpGeneratorGUI
         JButton limpiar = new JButton( "Limpiar" );
         limpiar.addActionListener( new ActionListener()
         {
-            @Override
             public void actionPerformed( ActionEvent e )
             {
                 limpiar();
@@ -118,12 +117,20 @@ public class CurpGeneratorGUI
         JButton generar = new JButton( "Generar" );
         generar.addActionListener( new ActionListener()
         {
-            @Override
             public void actionPerformed( ActionEvent event )
             {
                 generar();
             }
         } );
+        
+        JButton validar = new JButton( "Validar" );
+        validar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -134,6 +141,7 @@ public class CurpGeneratorGUI
         JPanel p = new JPanel();
         p.add( limpiar );
         p.add( generar );
+        p.add(validar);
         add( p, c );
     }
 

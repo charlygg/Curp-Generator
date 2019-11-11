@@ -63,4 +63,3 @@ El código fuente se ubica en las carpeta *src/main/java/curp*
 
 - CurpGenerator.java
 - CurpGeneratorGUI.java 
-

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.Random;
 
+@SuppressWarnings("unused")
 public class CurpGenerator
 {
 // ------------------------------ FIELDS ------------------------------
